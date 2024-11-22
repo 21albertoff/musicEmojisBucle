@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reproductor de Música</title>
+    <link rel="icon" href="favicon.ico">
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container-fluid text-center vh-100 d-flex flex-column justify-content-center align-items-center">
+        <!-- Reproductor -->
+        <div id="player" class="d-flex align-items-center justify-content-between">
+            <div class="d-flex align-items-center">
+                <img id="song-image" src="placeholder.jpg" alt="Canción" class="song-image me-3">
+                <div>
+                    <h5 id="song-title">Título de la Canción</h5>
+                </div>
+            </div>
+            <div class="controls">
+                <button id="prev" class="btn btn-outline-light">⏮️</button>
+                <button id="play-pause" class="btn btn-light">▶️</button>
+                <button id="next" class="btn btn-outline-light">⏭️</button>
+            </div>
+        </div>
+        
+
+        <!-- Elementos flotantes -->
+        <div id="floating-elements"></div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>// Lista de canciones
+        const songs = [
+            {
+                imagen: "covers/cover1.jpeg",
+                tituloCancion: "Canción 1",
+                audioCancion: "songs/audio1.mp3"
+            },
+            {
+                imagen: "covers/cover2.jpeg",
+                tituloCancion: "Canción 2",
+                audioCancion: "songs/audio2.mp3"
+            },
+            {
+                imagen: "covers/cover3.jpg",
+                tituloCancion: "Canción 3",
+                audioCancion: "songs/audio3.mp3"
+            }
+        ];
+        
+        let currentSongIndex = 0;
+        let isPlaying = false;
+        const audio = new Audio();
+        
+        // Elementos DOM
+        const songImage = document.getElementById("song-image");
+        const songTitle = document.getElementById("song-title");
+        const playPauseButton = document.getElementById("play-pause");
+        const floatingElements = document.getElementById("floating-elements");
+        
+
+        // Función para generar emojis flotantes gigantes de música
+        function createBigEmojiBurst() {
+    const emojiContainer = document.getElementById('floating-elements');
+    const numEmojis = 5; // Número de emojis flotantes gigantes a generar por intervalo
+    const emojis = ["🎶", "🎵", "🎧", "🎼", "🎤"]; // Emojis de música
+
+    for (let i = 0; i < numEmojis; i++) {
+        const emojiElement = document.createElement("div");
+        emojiElement.classList.add("emoji-big");
+        emojiElement.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+
+        // Posición aleatoria
+        const randomX = Math.random() * window.innerWidth;
+        const randomY = Math.random() * window.innerHeight;
+
+        emojiElement.style.left = `${randomX}px`;
+        emojiElement.style.top = `${randomY}px`;
+
+        // Agregar al contenedor
+        emojiContainer.appendChild(emojiElement);
+
+        // Eliminar el emoji después de un tiempo
+        setTimeout(() => {
+            emojiElement.remove();
+        }, 5000); // Duración de la animación
+    }
+}
+
+// Llamar a la función al cargar la página o cada vez que desees generar nuevos emojis flotantes
+setInterval(createBigEmojiBurst, 3000); 
+
+
+        // Actualiza la información del reproductor y prepara la canción
+function updatePlayer(index) {
+    const song = songs[index];
+    songImage.src = song.imagen;
+    songTitle.textContent = song.tituloCancion;
+    audio.src = song.audioCancion;
+
+    // Si ya estaba reproduciendo, reanudar automáticamente
+    if (isPlaying) {
+        audio.play().catch((error) => {
+            console.error("Error reproduciendo el audio:", error);
+        });
+    }
+}
+        
+        // Modificar el reproductor para incluir emojis flotantes
+playPauseButton.addEventListener("click", (e) => {
+    if (isPlaying) {
+        audio.pause();
+        isPlaying = false;
+        playPauseButton.textContent = "▶️";
+    } else {
+        audio.play();
+        isPlaying = true;
+        playPauseButton.textContent = "⏸️";
+
+        // Generar emojis flotantes en el botón de play/pause
+        const rect = playPauseButton.getBoundingClientRect();
+        createEmojiBurst(rect.left + rect.width / 2, rect.top, "✨"); // Cambiar emoji si deseas
+    }
+});
+        
+        // Cambiar de canción
+        document.getElementById("prev").addEventListener("click", () => {
+            currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
+            updatePlayer(currentSongIndex);
+            audio.play();
+            isPlaying = true;
+            playPauseButton.textContent = "⏸️";
+        });
+        
+        document.getElementById("next").addEventListener("click", () => {
+            currentSongIndex = (currentSongIndex + 1) % songs.length;
+            updatePlayer(currentSongIndex);
+            audio.play();
+            isPlaying = true;
+            playPauseButton.textContent = "⏸️";
+        });
+
+        // Función para generar emojis flotantes
+function createEmojiBurst(x, y, emoji) {
+    const emojiContainer = document.body; // Contenedor para los emojis
+    const numEmojis = 20; // Número de emojis en la ráfaga
+
+    for (let i = 0; i < numEmojis; i++) {
+        const emojiElement = document.createElement("div");
+        emojiElement.classList.add("emoji");
+        emojiElement.textContent = emoji;
+
+        // Posición inicial
+        emojiElement.style.left = `${x}px`;
+        emojiElement.style.top = `${y}px`;
+
+        // Posición aleatoria alrededor del clic
+        const randomX = Math.random() * 100 - 50; // Entre -50 y 50 px
+        const randomY = Math.random() * 100 - 50;
+
+        emojiElement.style.transform = `translate(${randomX}px, ${randomY}px)`;
+
+        // Agregar al DOM
+        emojiContainer.appendChild(emojiElement);
+
+        // Eliminar el emoji después de la animación
+        setTimeout(() => {
+            emojiElement.remove();
+        }, 2000); // Tiempo de duración de la animación
+    }
+}
+        
+        // Generar elementos flotantes
+// Modificar evento de clic en canciones flotantes
+function createFloatingItems() {
+    songs.forEach((song, index) => {
+        const item = document.createElement("div");
+        item.classList.add("floating-item");
+        item.style.left = `${Math.random() * 90}%`;
+        item.style.animationDuration = `${5 + Math.random() * 5}s`;
+
+        const img = document.createElement("img");
+        img.src = song.imagen;
+        img.alt = song.tituloCancion;
+
+        // Evento al hacer clic en una canción flotante
+        img.addEventListener("click", (e) => {
+            currentSongIndex = index; // Cambia el índice actual
+            updatePlayer(index);     // Actualiza la información del reproductor
+            audio.play().catch((error) => {
+                console.error("Error reproduciendo el audio:", error);
+            });
+            isPlaying = true;
+            playPauseButton.textContent = "⏸️"; // Actualiza el botón a pausa
+
+            // Generar emojis flotantes en la posición del clic
+            createEmojiBurst(e.clientX, e.clientY, "🎵"); // Cambiar emoji si deseas
+        });
+
+        const span = document.createElement("span");
+        span.textContent = song.tituloCancion;
+
+        item.appendChild(img);
+        item.appendChild(span);
+        floatingElements.appendChild(item);
+    });
+}
+
+// Inicializar
+updatePlayer(currentSongIndex);
+createFloatingItems();
+        
+
+    </script>
+</body>
+</html>
