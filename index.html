@@ -25,10 +25,20 @@
                 <button id="next" class="btn btn-outline-light">⏭️</button>
             </div>
         </div>
+
+
+
         
 
         <!-- Elementos flotantes -->
         <div id="floating-elements"></div>
+                <!-- Formulario para agregar una canción -->
+<div class="container mt-4">
+    <form id="song-form" class="d-flex justify-content-center">
+        <input type="text" id="song-name" class="form-control w-50" placeholder="Introduce el nombre de la canción" required>
+        <button type="submit" class="btn btn-primary ms-2">Guardar Canción</button>
+    </form>
+</div>
     </div>
 
     <!-- Scripts -->
@@ -213,6 +223,36 @@ function createFloatingItems() {
 // Inicializar
 updatePlayer(currentSongIndex);
 createFloatingItems();
+
+// Manejar el formulario de canción
+document.getElementById("song-form").addEventListener("submit", function(event) {
+    event.preventDefault(); // Evitar que el formulario se recargue
+
+    const songName = document.getElementById("song-name").value; // Obtener el nombre de la canción
+
+    if (songName) {
+        // Enviar el nombre de la canción al servidor
+        fetch("save_song.php", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            body: `song_name=${encodeURIComponent(songName)}`
+        })
+        .then(response => response.text())
+        .then(data => {
+            alert(data); // Mostrar mensaje de éxito o error
+            document.getElementById("song-name").value = ""; // Limpiar el campo de entrada
+        })
+        .catch(error => {
+            console.error("Error al guardar la canción:", error);
+            alert("Hubo un error al guardar la canción.");
+        });
+    } else {
+        alert("Por favor, ingresa un nombre de canción.");
+    }
+});
+
         
 
     </script>
