@@ -7,6 +7,8 @@ body {
   font-family: "Helvetica Neue", Arial, sans-serif;
   overflow: hidden;
   margin: 0;
+  height: 100vh; /* Asegura que el body ocupe toda la altura del viewport */
+  width: 100vw; /* Asegura que el body ocupe todo el ancho del viewport */
 }
 
 
@@ -77,18 +79,18 @@ body {
 
 @keyframes float-emoji-big {
   0% {
-    transform: translateY(100%); /* Comienza desde fuera de la pantalla por la parte inferior */
+    transform: translateY(50%); /* Comienza desde fuera de la pantalla por la parte inferior */
     opacity: 0; /* Comienza invisible */
     scale: 0.5; /* Escala más pequeña */
   }
   10% {
-    opacity: 1; /* Se hace visible rápidamente */
+    opacity: 0.5; /* Se hace visible rápidamente */
   }
   90% {
-    opacity: 0.5; /* Tamaño normal */
+    opacity: 0.9; /* Tamaño normal */
   }
   100% {
-    transform: translateY(-10%); /* Se mueve ligeramente fuera de la pantalla por la parte superior */
+    transform: translateY(-600%); /* Se mueve ligeramente fuera de la pantalla por la parte superior */
     opacity: 0; /* Se desvanece */
     scale: 0.5; /* Regresa a ser pequeño */
   }
@@ -97,7 +99,7 @@ body {
 .emoji-big {
   position: absolute;
   font-size: 48px; /* Tamaño grande para los emojis */
-  animation: float-emoji-big 10s ease-out infinite;
+  animation: float-emoji-big 20s ease-out infinite;
   pointer-events: none; /* No interfiere con los clics */
 }
 

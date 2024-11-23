@@ -70,8 +70,18 @@ function createBigEmojiBurst(listaEmojis) {
       emojis[Math.floor(Math.random() * emojis.length)];
 
     const randomX = Math.random() * window.innerWidth;
-    const randomY = Math.random() * window.innerHeight;
 
+    // Definir el límite inferior para evitar scroll.
+    const button = document.getElementById("button");
+    const buttonTop = button
+      ? button.getBoundingClientRect().top
+      : window.innerHeight;
+
+    // Limitar el rango máximo de Y para que no genere scroll
+    const maxY = buttonTop - 100; // Descuento de 100px por margen o espacio adicional
+    const randomY = Math.random() * Math.max(0, maxY);
+
+    emojiElement.style.position = "absolute";
     emojiElement.style.left = `${randomX}px`;
     emojiElement.style.top = `${randomY}px`;
 
