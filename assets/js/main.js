@@ -57,6 +57,37 @@ randomButton.addEventListener("click", () => {
   createEmojiBurst(rect.left + rect.width / 2, rect.top, EmojiEspecial);
 });
 
+// Botón para abrir el modal
+document.getElementById("open-modal").addEventListener("click", () => {
+  const modal = new bootstrap.Modal(document.getElementById("song-list-modal"));
+  modal.show();
+  populateSongList(); 
+});
+
+function populateSongList() {
+  const songList = document.getElementById("song-list");
+  songList.innerHTML = ""; 
+
+  songs.forEach((song, index) => {
+      const listItem = document.createElement("li");
+      listItem.classList.add("list-group-item", "list-group-item-action");
+      listItem.textContent = `${index + 1}. ${song.tituloCancion}`;
+
+      listItem.addEventListener("click", () => {
+          currentSongIndex = index;
+          updatePlayer(index);
+          audio.play();
+          isPlaying = true;
+          playPauseButton.textContent = "⏸️";
+
+          const modal = bootstrap.Modal.getInstance(document.getElementById("song-list-modal"));
+          modal.hide();
+      });
+
+      songList.appendChild(listItem);
+  });
+}
+
 // Función para generar emojis flotantes gigantes de música
 function createBigEmojiBurst(listaEmojis) {
   const emojiContainer = document.getElementById("floating-elements");
@@ -169,3 +200,5 @@ function createFloatingItems() {
 updatePlayer(currentSongIndex);
 createFloatingItems();
 setInterval(() => createBigEmojiBurst(listaEmojis), 5000);
+
+

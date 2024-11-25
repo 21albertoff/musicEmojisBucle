@@ -19,6 +19,34 @@
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
+    <!-- Modal de la lista de canciones -->
+    <div id="song-list-modal" class="modal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Lista de Canciones</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <ul id="song-list" class="list-group">
+                        <!-- Aquí se generará dinámicamente la lista -->
+                    </ul>
+                </div>
+                
+                    <form name="music" method="POST" data-netlify="true" id="song-form" class="d-flex justify-content-center">
+                        <input type="hidden" id="tipoCancion"  name="tipoCancion" value="vino">
+                        <input type="text" id="song-name" name="tituloCancion" class="form-control" placeholder="Escribir titulo cancion" required>
+                        <button type="submit" class="btn btn-primary">Agregar canción</button>
+                    </form>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+                 <!-- Formulario para agregar cancion -->
+           
+            </div>
+        </div>
+    </div>
+
     <div class="container-fluid text-center vh-100 d-flex flex-column justify-content-center align-items-center">
         
         <div id="player" class="d-flex align-items-center justify-content-between">
@@ -37,19 +65,8 @@
                 <button id="play-pause" class="btn btn-light">▶️</button>
                 <button id="next" class="btn btn-outline-light">⏭️</button>
                 <button id="random" class="btn btn-outline-light">🔀</button>
-
+                <button id="open-modal" class="btn btn-outline-light">➕</button>
             </div>
-
-            <!-- Formulario para agregar cancion -->
-            <div class="d-flex align-items-center">
-                
-                <form name="music" method="POST" data-netlify="true" id="song-form" class="d-flex justify-content-center">
-                    <input type="hidden" id="tipoCancion"  name="tipoCancion" value="vino">
-                    <input type="text" id="song-name" name="tituloCancion" class="form-control" placeholder="Escribir titulo cancion" required>
-                    <button type="submit" class="btn btn-primary">Agregar canción</button>
-                </form>
-            </div>
-            
         </div>
 
         <!-- Elementos flotantes -->
