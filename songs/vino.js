@@ -11,12 +11,12 @@ const songs = [
     audioCancion: "mp3/Lo que fuimos.weba",
   },
   {
-    imagen: "covers/Jesucristo García.jpeg",
+    imagen: "covers/Jesucristo García.jpg",
     tituloCancion: "Jesucristo García",
     audioCancion: "mp3/Jesucristo García.mp3",
   },
   {
-    imagen: "covers/No Lo Volveré a Hacer Más.jpeg",
+    imagen: "covers/No Lo Volveré a Hacer Más.jpg",
     tituloCancion: "No Lo Volveré a Hacer Más",
     audioCancion: "mp3/No Lo Volveré a Hacer Más.mp3",
   },
