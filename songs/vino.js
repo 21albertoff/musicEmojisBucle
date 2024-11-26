@@ -3,12 +3,12 @@ const songs = [
   {
     imagen: "covers/Mónaco - Sped Up.jpg",
     tituloCancion: "Mónaco - Sped Up",
-    audioCancion: "mp3/Mónaco - Sped Up.weba",
+    audioCancion: "mp3/Mónaco - Sped Up.mp3",
   },
   {
     imagen: "covers/Lo que fuimos.jpg",
     tituloCancion: "Lo que fuimos",
-    audioCancion: "mp3/Lo que fuimos.weba",
+    audioCancion: "mp3/Lo que fuimos.mp3",
   },
   {
     imagen: "covers/Jesucristo García.jpg",
@@ -41,9 +41,9 @@ const songs = [
     audioCancion: "mp3/Que Calor.mp3",
   },
   {
-    imagen: "covers/Flores de venganza.jpg",
-    tituloCancion: "Flores de venganza",
-    audioCancion: "mp3/Flores de venganza.mp3",
+    imagen: "covers/Flores de Venganza.jpg",
+    tituloCancion: "Flores de Venganza",
+    audioCancion: "mp3/Flores de Venganza.mp3",
   },
   {
     imagen: "covers/Que La Detengan.jpg",
