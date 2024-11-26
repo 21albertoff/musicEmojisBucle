@@ -60,4 +60,19 @@ const songs = [
     tituloCancion: "Mi rincón del paraíso",
     audioCancion: "mp3/Mi rincón del paraíso.mp3",
   },
+  {
+    imagen: "covers/Emborracharme.jpg",
+    tituloCancion: "Emborracharme",
+    audioCancion: "mp3/Emborracharme.mp3",
+  },
+  {
+    imagen: "covers/Entre Olivos, Palmas y Alegría.jpg",
+    tituloCancion: "Entre Olivos, Palmas y Alegría",
+    audioCancion: "mp3/Entre Olivos, Palmas y Alegría.mp3",
+  },
+  {
+    imagen: "covers/Soy un Truhán, Soy un Señor.jpg",
+    tituloCancion: "Soy un Truhán, Soy un Señor",
+    audioCancion: "mp3/Soy un Truhán, Soy un Señor.mp3",
+  },
 ];
