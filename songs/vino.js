@@ -75,4 +75,9 @@ const songs = [
     tituloCancion: "Soy un Truhán, Soy un Señor",
     audioCancion: "mp3/Soy un Truhán, Soy un Señor.mp3",
   },
+  {
+    imagen: "covers/Las vueltas que da tu pelo.jpg",
+    tituloCancion: "Las vueltas que da tu pelo",
+    audioCancion: "mp3/Las vueltas que da tu pelo.mp3",
+  },
 ];
