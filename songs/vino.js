@@ -50,6 +50,9 @@ const songs = [
     tituloCancion: "Que La Detengan",
     audioCancion: "mp3/Que La Detengan.mp3",
   },
+
+
+
   {
     imagen: "covers/El camino del exceso.jpg",
     tituloCancion: "El camino del exceso",
@@ -79,5 +82,46 @@ const songs = [
     imagen: "covers/Las vueltas que da tu pelo.jpg",
     tituloCancion: "Las vueltas que da tu pelo",
     audioCancion: "mp3/Las vueltas que da tu pelo.mp3",
+  },
+  {
+    imagen: "covers/Remedios de la abuela.jpg",
+    tituloCancion: "Remedios de la abuela",
+    audioCancion: "mp3/Remedios de la abuela.mp3",
+  },
+  {
+    imagen: "covers/El Orgullo Y La Visa.jpg",
+    tituloCancion: "El Orgullo Y La Visa",
+    audioCancion: "mp3/El Orgullo Y La Visa.mp3",
+  },
+  {
+    imagen: "covers/La Verdad.jpg",
+    tituloCancion: "La Verdad",
+    audioCancion: "mp3/La Verdad.mp3",
+  },
+  {
+    imagen: "covers/Que salga el sol por donde quiera.jpg",
+    tituloCancion: "Que salga el sol por donde quiera",
+    audioCancion: "mp3/Que salga el sol por donde quiera.mp3",
+  },
+
+  {
+    imagen: "covers/Mediterráneo.jpg",
+    tituloCancion: "Mediterráneo",
+    audioCancion: "mp3/Mediterráneo.mp3",
+  },
+  {
+    imagen: "covers/Haizea.jpg",
+    tituloCancion: "Haizea",
+    audioCancion: "mp3/Haizea.mp3",
+  },
+  {
+    imagen: "covers/Vino Tinto.jpg",
+    tituloCancion: "Vino Tinto",
+    audioCancion: "mp3/Vino Tinto.mp3",
+  },
+  {
+    imagen: "covers/Adicto.jpg",
+    tituloCancion: "Adicto",
+    audioCancion: "mp3/Adicto.mp3",
   },
 ];
